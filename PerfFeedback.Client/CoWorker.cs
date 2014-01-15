@@ -6,21 +6,16 @@ using PerfFeedback.Client.Models;
 
 namespace PerfFeedback.Client
 {
-    public class CoWorker : ItemViewModel
+    public class CoWorkerViewModel : ItemViewModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        /// <summary>
-        /// TODO copy from other project
-        /// </summary>
-        /// <value>
-        /// The work item.
-        /// </value>
-        public CoWorkerWorkItem WorkItem { get; set; }
+        public List<Strength> Strengths { get; set; }
+        public List<AreaForImprovement> AreaForImprovement { get; set; }
 
         protected override void OnCommit()
         {
-            CoWorkerModel.CommitCoWorker(
+            CoWorkerModel.Commit(this);
         }
     }
 }
