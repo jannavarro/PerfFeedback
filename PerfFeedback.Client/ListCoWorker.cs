@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace PerfFeedback.Client
 {
-    public class ListCoWorker : ListViewModel<CoWorker>
+    public class ListCoWorker : ListViewModel<CoWorkerViewModel>
     {
         int _id = 0;
 
         public void Add(string name)
         {
-            this.Add(new CoWorker() { ID = _id++, Name = name });
+            this.Add(new CoWorkerViewModel() { ID = _id++, Name = name });
         }
 
-        public ObservableCollection<CoWorker> Items
+        public ObservableCollection<CoWorkerViewModel> Items
         {
             get
             {
@@ -35,8 +35,8 @@ namespace PerfFeedback.Client
 
         public ListCoWorker()
         {
-            this.Add(new CoWorker() { ID = _id++, Name = "Jan" });
-            this.Add(new CoWorker() { ID = _id++, Name = "Lloyd" });
+            this.Add(new CoWorkerViewModel() { ID = _id++, Name = "Jan" });
+            this.Add(new CoWorkerViewModel() { ID = _id++, Name = "Lloyd" });
         }
     }
 }

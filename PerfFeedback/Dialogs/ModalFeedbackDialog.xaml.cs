@@ -27,7 +27,7 @@ namespace PerfFeedback.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var item = DataContext as CoWorker;
+            var item = DataContext as CoWorkerViewModel;
             if (item != null)
             {
                 var command = item.SaveCloseCommand as DelegateCommand;

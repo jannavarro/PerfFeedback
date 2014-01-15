@@ -46,7 +46,7 @@ namespace PerfFeedback
             //    }
             //}
             ModalFeedbackDialog dialog = new ModalFeedbackDialog();
-            dialog.DataContext = new CoWorker();
+            dialog.DataContext = new CoWorkerViewModel();
             if (dialog.ShowDialog().IsTrue())
             {
             }

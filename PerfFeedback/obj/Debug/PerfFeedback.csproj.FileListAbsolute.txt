@@ -17,3 +17,4 @@ C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback
 C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\obj\Debug\PerfFeedback.g.resources
 C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\obj\Debug\PerfFeedback.Properties.Resources.resources
 C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\obj\Debug\PerfFeedback.csproj.GenerateResource.Cache
+C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback\bin\Debug\PerfFeedback.exe.config
