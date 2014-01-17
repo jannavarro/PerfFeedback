@@ -1,5 +1,9 @@
-C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.dll
-C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.pdb
-C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.dll
-C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.pdb
-C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.csprojResolveAssemblyReference.cache
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.dll
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.pdb
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.dll
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.pdb
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.csprojResolveAssemblyReference.cache
+C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.dll
+C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback.Client\bin\Debug\PerfFeedback.Client.pdb
+C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.dll
+C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback.Client\obj\Debug\PerfFeedback.Client.pdb
