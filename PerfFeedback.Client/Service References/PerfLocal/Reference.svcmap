@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5f0c0562-8769-4203-b01f-ede2e84d885a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/PerfFeedbackService/CoWorkerService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b26b8876-b8da-42aa-a8bb-d4ab53d9d63e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PerfFeedbackService/CoWorkerService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d9dc0b65-7c38-46d4-ba9c-a604f19e4d05" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PerfFeedbackService/CoWorkerService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f144a343-fab7-4292-8a39-6c69db7f5a52" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PerfFeedbackService/CoWorkerService/mex" />
+    <MetadataFile FileName="perf.xsd" MetadataType="Schema" ID="89415ce8-5385-4a51-b3c3-4dae42ec33f0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PerfFeedbackService/CoWorkerService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

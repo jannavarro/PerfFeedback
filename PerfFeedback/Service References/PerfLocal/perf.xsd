@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://perf.com/perf" elementFormDefault="qualified" targetNamespace="http://perf.com/perf" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CoWorker">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CoWorkerId" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkItems" nillable="true" type="tns:ArrayOfWorkItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CoWorker" nillable="true" type="tns:CoWorker" />
+  <xs:complexType name="ArrayOfWorkItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkItem" nillable="true" type="tns:WorkItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkItem" nillable="true" type="tns:ArrayOfWorkItem" />
+  <xs:complexType name="WorkItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaForImprovement" nillable="true" type="tns:AreaForImprovement" />
+      <xs:element minOccurs="0" name="Strength" nillable="true" type="tns:Strength" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkItemId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkItem" nillable="true" type="tns:WorkItem" />
+  <xs:complexType name="AreaForImprovement">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Feedback">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AreaForImprovement" nillable="true" type="tns:AreaForImprovement" />
+  <xs:complexType name="Feedback">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FeedbackId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Feedback" nillable="true" type="tns:Feedback" />
+  <xs:complexType name="Strength">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Feedback">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Strength" nillable="true" type="tns:Strength" />
+</xs:schema>

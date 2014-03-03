@@ -22,37 +22,81 @@ namespace PerfFeedback.WcfBusinessService
         //    }
         //}
 
-        public CoWorker CommitCoWorker(CoWorker commitItem)
+        public CoWorker AddCoWorker(CoWorker coWorker)
         {
-            using (var db = new FeedbackContext())
+            CoWorker retVal = null;
+            using (var db = new CoWorkerDbContext())
             {
-                db.CoWorker.Add(commitItem);
-
-                foreach (Strength item in commitItem.Strengths)
+                try
                 {
-                    db.Strengths.Add(item);                    
-                }
+                    db.CoWorkers.Add(coWorker);
+                    db.SaveChanges();
 
-                foreach (AreaForImprovement item in commitItem.AreasForImprovement)
+                    long id = coWorker.CoWorkerId;
+
+                    if (id > 0)
+                    {
+                        var result = db.CoWorkers.Find(new object[] { id });
+                        retVal = result as CoWorker;
+                    }
+                    else
+                    {
+                        throw new Exception("Coworker was not saved.");
+                    }
+                }
+                catch (Exception e)
                 {
-                    db.AreasForImprovement.Add(item);
                 }
-
-                db.SaveChanges();
-
-                // Display all Blogs from the database
-                var query = from s in db.Strengths
-                            orderby s.Feedback
-                            select s;
-
-                foreach (var item in query)
-                {
-                    Console.WriteLine(item.Feedback);
-                }
-
-                //return db.CoWorker;
-                return new CoWorker();
             }
+
+            return retVal;
+        }
+
+
+        public CoWorker UpdateCoWorker(CoWorker coWorker)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CoWorker GetCoWorker(long coWorkerId, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CoWorker> GetAllCoWorkers()
+        {
+            List<CoWorker> retVal = new List<CoWorker>();
+            using (var db = new CoWorkerDbContext())
+            {
+                try
+                {
+                    var coWorkers = db.CoWorkers
+                                        .Include("WorkItems")
+                                        .ToList();
+                    List<Feedback> feedbacks = db.Feedbacks.ToList();
+                    foreach (var coWorker in coWorkers)
+                    {
+                        foreach (var wi in coWorker.WorkItems)
+                        {
+                            if(wi.AreaForImprovement_FeedbackId.HasValue)
+                            {
+                                wi.AreaForImprovement = feedbacks.Find(fb => fb.FeedbackId == wi.AreaForImprovement_FeedbackId.Value) as AreaForImprovement;
+                            }
+                            if (wi.Strength_FeedbackId.HasValue)
+                            {
+                                wi.Strength = feedbacks.Find(fb => fb.FeedbackId == wi.Strength_FeedbackId.Value) as Strength;
+                            }
+                        }
+                        
+                        retVal.Add(coWorker);
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
+            return retVal;
         }
     }
 

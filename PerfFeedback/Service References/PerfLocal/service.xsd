@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://perf.com/perf" />
+  <xs:element name="AddCoWorker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://perf.com/perf" minOccurs="0" name="coWorker" nillable="true" type="q1:CoWorker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCoWorkerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://perf.com/perf" minOccurs="0" name="AddCoWorkerResult" nillable="true" type="q2:CoWorker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCoWorker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://perf.com/perf" minOccurs="0" name="coWorker" nillable="true" type="q3:CoWorker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCoWorkerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://perf.com/perf" minOccurs="0" name="UpdateCoWorkerResult" nillable="true" type="q4:CoWorker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCoWorker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="coWorkerId" type="xs:long" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCoWorkerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://perf.com/perf" minOccurs="0" name="GetCoWorkerResult" nillable="true" type="q5:CoWorker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

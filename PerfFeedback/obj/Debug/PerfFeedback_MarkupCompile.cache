@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback\obj\Debug\
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\obj\Debug\
 PerfFeedback
 none
 false
 DEBUG;TRACE
-C:\Users\Jandee\Documents\Programming\PerfFeedbackGit\PerfFeedback\App.xaml
-21272092450
+C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\App.xaml
+3-1832817273
 
-71095473694
-1633396305
-Dialogs\ModalFeedbackDialog.xaml;MainWindow.xaml;
+91281974360
+25-932105018
+Dialogs\ChooseWorkItem.xaml;Dialogs\ModalFeedbackDialog.xaml;MainWindow.xaml;
 
 False
 

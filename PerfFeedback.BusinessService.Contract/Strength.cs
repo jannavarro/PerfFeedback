@@ -6,7 +6,8 @@ using System.Text;
 
 namespace PerfFeedback.BusinessService.Contract
 {
-    public class Strength : Comment
+    [DataContract(Namespace = "http://perf.com/perf")]
+    public class Strength : Feedback
     {
     }
 }
