@@ -10,23 +10,17 @@ namespace PerfFeedback.WcfBusinessService
 {
     public class CoWorkerService : ICoWorkerService
     {
-        //private IDataService _dataService;
-        //private IDataService DataService
-        //{
-        //    get
-        //    {
-        //        if (_dataService == null)
-        //        {
-        //            _dataService = ServiceLocator.Find<IDataService>();
-        //        }
-        //    }
-        //}
-
         public CoWorker AddCoWorker(CoWorker coWorker)
         {
             CoWorker retVal = null;
             using (var db = new CoWorkerDbContext())
             {
+                //validate if record exists.
+                if (db.CoWorkers.Any(c => c.Name == coWorker.Name))
+                {
+                    throw new FaultException(string.Format("CoWorker with Name of {0} already exists.", coWorker.Name));
+                }
+
                 try
                 {
                     db.CoWorkers.Add(coWorker);
@@ -41,7 +35,7 @@ namespace PerfFeedback.WcfBusinessService
                     }
                     else
                     {
-                        throw new Exception("Coworker was not saved.");
+                        throw new FaultException("Coworker was not saved.");
                     }
                 }
                 catch (Exception e)
@@ -70,6 +64,7 @@ namespace PerfFeedback.WcfBusinessService
             {
                 try
                 {
+                    //notes: called eager loading.
                     var coWorkers = db.CoWorkers
                                         .Include("WorkItems")
                                         .ToList();
@@ -90,6 +85,100 @@ namespace PerfFeedback.WcfBusinessService
                         
                         retVal.Add(coWorker);
                     }
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
+            return retVal;
+        }
+
+
+        public WorkItem AddWorkItem(WorkItem workItem)
+        {
+            WorkItem retVal = new WorkItem();
+            using (var db = new CoWorkerDbContext())
+            {
+                try
+                {
+                    db.WorkItems.Add(workItem);
+                    db.SaveChanges();
+
+                    long id = workItem.WorkItemId;
+
+                    if (id > 0)
+                    {
+                        var result = db.WorkItems.Find(new object[] { id, workItem.Title });
+                        retVal = result as WorkItem;
+                    }
+                    else
+                    {
+                        throw new FaultException("WorkItem was not saved.");
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
+            return retVal;
+        }
+
+        public WorkItem UpdateWorkItem(WorkItem workItem)
+        {
+            WorkItem retVal = new WorkItem();
+            using (var db = new CoWorkerDbContext())
+            {
+                try
+                {
+                    db.WorkItems.Attach(workItem);
+                    var workitemEntry = db.Entry(workItem);
+                    workitemEntry.State = System.Data.Entity.EntityState.Modified;
+                    
+                    //todo: study if there is a better way to update child tables.
+                    var feedBacks = db.Feedbacks;
+                    
+                    var strengthToUpdate = feedBacks.FirstOrDefault(f => f.FeedbackId == workItem.Strength.FeedbackId);
+                    strengthToUpdate.Comment = workItem.Strength.Comment;
+                    db.Entry(strengthToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    
+                    var areaImprovementToUpdate = feedBacks.FirstOrDefault(f => f.FeedbackId == workItem.AreaForImprovement.FeedbackId);
+                    areaImprovementToUpdate.Comment = workItem.AreaForImprovement.Comment;
+                    db.Entry(areaImprovementToUpdate).State = System.Data.Entity.EntityState.Modified;
+
+                    db.SaveChanges();
+
+                    long id = workItem.WorkItemId;
+
+                    if (id > 0)
+                    {
+                        var result = db.WorkItems.Find(new object[] { id, workItem.Title });
+                        retVal = result as WorkItem;
+                    }
+                    else
+                    {
+                        throw new FaultException("WorkItem was not saved.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException("WorkItem was not saved.");
+                }
+            }
+
+            return retVal;
+        }
+
+        public WorkItem GetWorkItem(long workItemId, string title)
+        {
+            WorkItem retVal = null;
+            using (var db = new CoWorkerDbContext())
+            {
+                try
+                {
+                    var result = db.WorkItems.Find(new object[] { workItemId, title });
+                    retVal = result as WorkItem;
                 }
                 catch (Exception e)
                 {

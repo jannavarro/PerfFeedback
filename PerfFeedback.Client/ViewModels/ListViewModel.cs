@@ -3,8 +3,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using PerfFeedback.Client.Interfaces;
+using PerfFeedback.Framework;
 
-namespace PerfFeedback.Client.ViewModels{    public abstract class ListViewModel<TViewModel, TModel> : ObservableCollection<TViewModel>        where TModel : class, new()    {        private ICommand _addCommand;        private ICommand _editCommand;        private TViewModel _selectedItem;
+namespace PerfFeedback.Client.ViewModels{    public abstract class ListViewModel<TViewModel, TModel> : ObservableCollection<TViewModel>, ISubscriber        where TModel : class, new()    {        private ICommand _addCommand;        private ICommand _editCommand;        private TViewModel _selectedItem;
         private TModel _model;
 
         public event PropertyChangedEventHandler SelectedItemChanged;
@@ -20,6 +21,7 @@ namespace PerfFeedback.Client.ViewModels{    public abstract class ListViewMod
             set
             {
                 _selectedItem = value;
+                OnNotifyPropertyChanged(string.Empty);
                 if (SelectedItemChanged != null)
                 {
                     SelectedItemChanged(this, new PropertyChangedEventArgs("SelectedItem"));
@@ -49,6 +51,7 @@ namespace PerfFeedback.Client.ViewModels{    public abstract class ListViewMod
         public ListViewModel()
         {
             OnInitializeItems();
+            OnSubscribe();
         }
 
         protected virtual void OnAddItem(object param)
@@ -69,4 +72,19 @@ namespace PerfFeedback.Client.ViewModels{    public abstract class ListViewMod
         {
             return true;
         }
-                protected virtual bool OnCanEdit(object param)        {            return SelectedItem != null;        }        protected abstract void OnInitializeItems();    }}
+                protected virtual bool OnCanEdit(object param)        {            return SelectedItem != null;        }
+
+        protected virtual void OnNotifyPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected abstract void OnInitializeItems();
+        protected abstract void OnSubscribe();
+        protected abstract void OnHandleNotification(SubscribeResponse response);
+
+        public void HandleNotification(SubscribeResponse response)
+        {
+            OnHandleNotification(response);
+        }
+    }}

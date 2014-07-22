@@ -1,7 +1,7 @@
 ﻿<Window x:Class="PerfFeedback.Dialogs.ChooseWorkItem"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ChooseWorkItem" Height="300" Width="941" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Add/Edit Work Item Feedback" Height="300" Width="941" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid Height="Auto"          Width="Auto"          HorizontalAlignment="Stretch"          VerticalAlignment="Stretch" Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="817*"/>
@@ -12,13 +12,13 @@
                       SelectionMode="Single"
                       IsSynchronizedWithCurrentItem="True"
                       HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch" Margin="0,0,10,0">
+                      VerticalAlignment="Stretch" Margin="0,0,10,0" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Work Item ID" Width="100" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Strengths" Width="350" DisplayMemberBinding="{Binding Strength.Comment}" />
-                        <GridViewColumn Header="Areas for improvement" Width="350" DisplayMemberBinding="{Binding AreaForImprovement.Comment}" />
+                        <GridViewColumn Header="Work Item ID" Width="100" DisplayMemberBinding="{Binding Title}" />
+                        <GridViewColumn Header="Strengths" Width="330" DisplayMemberBinding="{Binding Strength.Comment}" />
+                        <GridViewColumn Header="Areas for improvement" Width="330" DisplayMemberBinding="{Binding AreaForImprovement.Comment}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
@@ -29,9 +29,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Content="Add"
-                    Command="{Binding WorkItems.AddCommand}"/>
+                    Command="{Binding WorkItems.AddCommand}"
+                    Width="75"
+                    Height="22"/>
             <Button Content="Edit"
-                    Command="{Binding WorkItems.EditCommand}" Margin="0,56,0,-56"/>
+                    Command="{Binding WorkItems.EditCommand}" 
+                    Width="75"
+                    Height="22"
+                    Margin="0,35,0,-35"/>
         </Grid>
     </Grid>
 </Window>

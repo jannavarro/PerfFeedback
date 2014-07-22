@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using PerfFeedback.Client.Models;
+using System.Linq;
+using PerfFeedback.Framework;
 
 namespace PerfFeedback.Client.ViewModels
 {
@@ -9,7 +11,7 @@ namespace PerfFeedback.Client.ViewModels
         int _id = 0;
         public void Add(string name)
         {
-            this.Add(new CoWorker() { Id = _id++, Name = name });
+            this.Add(new CoWorker() { CoWorkerId = _id++, Name = name });
         }
 
         public ObservableCollection<CoWorker> Items
@@ -47,12 +49,40 @@ namespace PerfFeedback.Client.ViewModels
         protected override void OnInitializeItems()
         {
             var items = Model.GetAll();
-            if (items != null)
+            if(items != null)
             {
                 foreach (var item in items)
 	            {
                     this.Add(item);
 	            }
+            }
+        }
+
+        protected override void OnSubscribe()
+        {
+            TempEventBus.Subscribe("CommitCoWorker", this);
+        }
+
+        protected override void OnHandleNotification(SubscribeResponse response)
+        {
+            if (response.StatusResult == Result.Success)
+            {
+                var coWorker = response.ExpectedResponse as CoWorker;
+                var toUpdate = this.Items.FirstOrDefault(c => c.CoWorkerId == coWorker.CoWorkerId);
+
+                //add or update
+                if (toUpdate == null)
+                {
+                    this.Add(coWorker);
+                }
+                else
+                {
+                    toUpdate = coWorker;
+                }
+            }
+            else
+            {
+
             }
         }
     }

@@ -1,7 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 using PerfFeedback.Client;
 using PerfFeedback.Client.Interfaces;
 using PerfFeedback.Client.ViewModels;
@@ -29,11 +29,27 @@ namespace PerfFeedback{    /// <summary>    /// Interaction logic for MainWin
             var item = DataContext as ListCoWorker;
             item.SelectedItem.OperationState = OperationState.Edit;
             dialog.DataContext = new CoWorker(item.SelectedItem);
+            dialog.ShowDialog();
+            //update item when dialog closes.
+            item.SelectedItem = dialog.DataContext as CoWorker;
+        }
 
-            if (dialog.ShowDialog().IsTrue())
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var context = DataContext as ListCoWorker;
+            try
             {
-
+                context.EditCommand.Execute(null);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace PerfFeedback.Framework
 {
     public class SubscribeResponse
     {
-        public Result Result { get; set; }
+        public Result StatusResult { get; set; }
         public object ExpectedResponse { get; set; }
         public string ErrorMessage { get; set; }
     }

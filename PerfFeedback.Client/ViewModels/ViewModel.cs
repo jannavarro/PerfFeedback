@@ -11,7 +11,7 @@ using System.Text;
 namespace PerfFeedback.Client.ViewModels
 {
     [DataContract]
-    public class ViewModel
+    public class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using PerfFeedback.Client.Models;
+using PerfFeedback.Framework;
 
 namespace PerfFeedback.Client.ViewModels
 {
@@ -37,6 +38,34 @@ namespace PerfFeedback.Client.ViewModels
         protected override void OnInitializeItems()
         {
             //throw new NotImplementedException();
+        }
+
+        protected override void OnSubscribe()
+        {
+            TempEventBus.Subscribe("CommitWorkItem", this);
+        }
+
+        protected override void OnHandleNotification(SubscribeResponse response)
+        {
+            if (response.StatusResult == Result.Success)
+            {
+                var workItem = response.ExpectedResponse as WorkItem;
+                var toUpdate = this.FirstOrDefault(w => w.WorkItemId == workItem.WorkItemId);
+                
+                //add or update
+                if (toUpdate == null)
+                {
+                    this.Add(workItem);
+                }
+                else
+                {
+                    toUpdate = workItem;
+                }
+            }
+            else
+            {
+                
+            }
         }
     }
 }

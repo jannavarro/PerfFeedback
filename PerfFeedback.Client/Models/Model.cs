@@ -9,6 +9,11 @@ using System.Xml.Serialization;
 
 namespace PerfFeedback.Client.Models
 {
+    /// <summary>
+    /// The Model in charge of communicating with the business service and translating the contract response to a ViewModel class.
+    /// </summary>
+    /// <typeparam name="TContractItem">The type of the contract item.</typeparam>
+    /// <typeparam name="TViewModelItem">The type of the view model item.</typeparam>
     public abstract class Model<TContractItem, TViewModelItem>
         where TContractItem : class
         where TViewModelItem : class
@@ -27,11 +32,25 @@ namespace PerfFeedback.Client.Models
             }
         }
 
-        public void Get(long id)
+        public void Update(TViewModelItem commitItem)
         {
             try
             {
-                OnGet(id);
+                var item = OnTranslateToContract(commitItem);
+                var response = OnUpdate(item);
+                OnPublish(response);
+            }
+            catch (Exception e)
+            {
+                //TODO LOG EXCEPTION
+            }
+        }
+
+        public void Get(long id, List<object> obj)
+        {
+            try
+            {
+                OnGet(id, obj);
             }
             catch (Exception e)
             {
@@ -59,7 +78,8 @@ namespace PerfFeedback.Client.Models
         }
 
         protected abstract TViewModelItem OnCommit(TContractItem commitItem);
-        protected abstract TViewModelItem OnGet(long id);
+        protected abstract TViewModelItem OnUpdate(TContractItem commitItem);
+        protected abstract TViewModelItem OnGet(long id, List<object> obj);
         protected abstract void OnPublish(TViewModelItem item);
         protected abstract List<TViewModelItem> OnGetAll();
 

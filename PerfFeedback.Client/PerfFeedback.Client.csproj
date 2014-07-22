@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationSettings\ApplicationSettings.cs" />
     <Compile Include="Interfaces\IItemView.cs" />
     <Compile Include="Interfaces\IOperationView.cs" />
+    <Compile Include="Models\WorkItemModel.cs" />
     <Compile Include="Service References\PerfLocal\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +81,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\PerfFeedback.BusinessService.Contract.CoWorker.datasource" />
+    <None Include="Properties\DataSources\PerfFeedback.BusinessService.Contract.WorkItem.datasource" />
     <None Include="Service References\PerfLocal\perf.xsd">
       <SubType>Designer</SubType>
     </None>

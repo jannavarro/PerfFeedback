@@ -10,9 +10,12 @@ namespace PerfFeedback.Client.ViewModels
     public class Feedback : ViewModel
     {
         [DataMember]
-        public string ID { get; set; }
+        public long FeedbackId { get; set; }
 
         [DataMember]
         public string Comment { get; set; }
+
+        [DataMember]        
+        public long WorkItemId { get; set; }
     }
 }

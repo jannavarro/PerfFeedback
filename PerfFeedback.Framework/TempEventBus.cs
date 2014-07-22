@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace PerfFeedback.Framework
 {
     /// <summary>
-    /// Temporary class to publish event. Will improve this to a pattern later on.
+    /// Temporary class to publish event. Will improve this to somethign better later on.
     /// </summary>
     public static class TempEventBus
     {

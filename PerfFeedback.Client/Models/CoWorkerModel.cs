@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PerfFeedback.BusinessService.Contract;
 using PerfFeedback.Client.PerfLocal;
@@ -24,13 +25,6 @@ namespace PerfFeedback.Client.Models{    public class CoWorkerModel : Model<Co
 
         }
 
-        protected override VM.CoWorker OnGet(long id)
-        {
-            //var coWorker = Service.GetCoWorker(id);
-
-            return null;// OnTranslateToViewModel(coWorker);
-        }
-
         protected override VM.CoWorker OnCommit(CoWorker commitItem)
         {
             return OnTranslateToViewModel(Service.AddCoWorker(commitItem));
@@ -50,7 +44,20 @@ namespace PerfFeedback.Client.Models{    public class CoWorkerModel : Model<Co
 
         protected override void OnPublish(VM.CoWorker item)
         {
-            SubscribeResponse response = new SubscribeResponse() { ExpectedResponse = item, Result = Framework.Result.Success };
+            SubscribeResponse response = new SubscribeResponse() { ExpectedResponse = item, StatusResult = Framework.Result.Success };
             TempEventBus.Publish("CommitCoWorker", response);
+        }
+
+        protected override VM.CoWorker OnGet(long id, List<object> obj)
+        {
+            //var coWorker = Service.GetCoWorker(id);
+            //return OnTranslateToViewModel(coWorker);
+            return null;
+        }
+
+        protected override VM.CoWorker OnUpdate(CoWorker commitItem)
+        {
+            throw new NotImplementedException();
+            //return Service.UpdateCoWorker(commitItem);
         }
     }}

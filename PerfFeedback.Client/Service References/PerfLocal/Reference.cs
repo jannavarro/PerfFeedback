@@ -33,6 +33,24 @@ namespace PerfFeedback.Client.PerfLocal {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/GetCoWorker", ReplyAction="http://tempuri.org/ICoWorkerService/GetCoWorkerResponse")]
         System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.CoWorker> GetCoWorkerAsync(long coWorkerId, string name);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/AddWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/AddWorkItemResponse")]
+        PerfFeedback.BusinessService.Contract.WorkItem AddWorkItem(PerfFeedback.BusinessService.Contract.WorkItem workItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/AddWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/AddWorkItemResponse")]
+        System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> AddWorkItemAsync(PerfFeedback.BusinessService.Contract.WorkItem workItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/UpdateWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/UpdateWorkItemResponse")]
+        PerfFeedback.BusinessService.Contract.WorkItem UpdateWorkItem(PerfFeedback.BusinessService.Contract.WorkItem workItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/UpdateWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/UpdateWorkItemResponse")]
+        System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> UpdateWorkItemAsync(PerfFeedback.BusinessService.Contract.WorkItem workItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/GetWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/GetWorkItemResponse")]
+        PerfFeedback.BusinessService.Contract.WorkItem GetWorkItem(long workItemId, string title);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/GetWorkItem", ReplyAction="http://tempuri.org/ICoWorkerService/GetWorkItemResponse")]
+        System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> GetWorkItemAsync(long workItemId, string title);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICoWorkerService/GetAllCoWorkers", ReplyAction="http://tempuri.org/ICoWorkerService/GetAllCoWorkersResponse")]
         PerfFeedback.BusinessService.Contract.CoWorker[] GetAllCoWorkers();
         
@@ -89,6 +107,30 @@ namespace PerfFeedback.Client.PerfLocal {
         
         public System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.CoWorker> GetCoWorkerAsync(long coWorkerId, string name) {
             return base.Channel.GetCoWorkerAsync(coWorkerId, name);
+        }
+        
+        public PerfFeedback.BusinessService.Contract.WorkItem AddWorkItem(PerfFeedback.BusinessService.Contract.WorkItem workItem) {
+            return base.Channel.AddWorkItem(workItem);
+        }
+        
+        public System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> AddWorkItemAsync(PerfFeedback.BusinessService.Contract.WorkItem workItem) {
+            return base.Channel.AddWorkItemAsync(workItem);
+        }
+        
+        public PerfFeedback.BusinessService.Contract.WorkItem UpdateWorkItem(PerfFeedback.BusinessService.Contract.WorkItem workItem) {
+            return base.Channel.UpdateWorkItem(workItem);
+        }
+        
+        public System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> UpdateWorkItemAsync(PerfFeedback.BusinessService.Contract.WorkItem workItem) {
+            return base.Channel.UpdateWorkItemAsync(workItem);
+        }
+        
+        public PerfFeedback.BusinessService.Contract.WorkItem GetWorkItem(long workItemId, string title) {
+            return base.Channel.GetWorkItem(workItemId, title);
+        }
+        
+        public System.Threading.Tasks.Task<PerfFeedback.BusinessService.Contract.WorkItem> GetWorkItemAsync(long workItemId, string title) {
+            return base.Channel.GetWorkItemAsync(workItemId, title);
         }
         
         public PerfFeedback.BusinessService.Contract.CoWorker[] GetAllCoWorkers() {

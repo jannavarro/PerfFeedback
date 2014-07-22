@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\navarrj\Documents\Visual Studio 2012\Projects\PerfFeedback\PerfFeedback\App.xaml
-3-1832817273
+4-2024770712
 
-13-1637643784
+14-1203890623
 25-932105018
-Dialogs\ChooseWorkItem.xaml;Dialogs\ModalFeedbackDialog.xaml;MainWindow.xaml;
+Dialogs\ChooseWorkItem.xaml;Dialogs\ModalFeedbackDialog.xaml;Dialogs\ModalWorkItemDialog.xaml;MainWindow.xaml;
 
 False
 

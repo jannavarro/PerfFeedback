@@ -16,7 +16,7 @@ namespace PerfFeedback.Client.ViewModels
 
         public AreaForImprovement(AreaForImprovement copy)
         {
-            ID = copy.ID;
+            FeedbackId = copy.FeedbackId;
             Comment = copy.Comment;
         }
     }

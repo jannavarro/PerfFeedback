@@ -25,6 +25,24 @@
   <wsdl:message name="ICoWorkerService_GetCoWorker_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCoWorkerResponse" />
   </wsdl:message>
+  <wsdl:message name="ICoWorkerService_AddWorkItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkItem" />
+  </wsdl:message>
+  <wsdl:message name="ICoWorkerService_AddWorkItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoWorkerService_UpdateWorkItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkItem" />
+  </wsdl:message>
+  <wsdl:message name="ICoWorkerService_UpdateWorkItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICoWorkerService_GetWorkItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkItem" />
+  </wsdl:message>
+  <wsdl:message name="ICoWorkerService_GetWorkItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkItemResponse" />
+  </wsdl:message>
   <wsdl:message name="ICoWorkerService_GetAllCoWorkers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCoWorkers" />
   </wsdl:message>
@@ -43,6 +61,18 @@
     <wsdl:operation name="GetCoWorker">
       <wsdl:input wsaw:Action="http://tempuri.org/ICoWorkerService/GetCoWorker" message="tns:ICoWorkerService_GetCoWorker_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICoWorkerService/GetCoWorkerResponse" message="tns:ICoWorkerService_GetCoWorker_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICoWorkerService/AddWorkItem" message="tns:ICoWorkerService_AddWorkItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICoWorkerService/AddWorkItemResponse" message="tns:ICoWorkerService_AddWorkItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICoWorkerService/UpdateWorkItem" message="tns:ICoWorkerService_UpdateWorkItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICoWorkerService/UpdateWorkItemResponse" message="tns:ICoWorkerService_UpdateWorkItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICoWorkerService/GetWorkItem" message="tns:ICoWorkerService_GetWorkItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICoWorkerService/GetWorkItemResponse" message="tns:ICoWorkerService_GetWorkItem_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllCoWorkers">
       <wsdl:input wsaw:Action="http://tempuri.org/ICoWorkerService/GetAllCoWorkers" message="tns:ICoWorkerService_GetAllCoWorkers_InputMessage" />
@@ -71,6 +101,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetCoWorker">
       <soap:operation soapAction="http://tempuri.org/ICoWorkerService/GetCoWorker" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkItem">
+      <soap:operation soapAction="http://tempuri.org/ICoWorkerService/AddWorkItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkItem">
+      <soap:operation soapAction="http://tempuri.org/ICoWorkerService/UpdateWorkItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkItem">
+      <soap:operation soapAction="http://tempuri.org/ICoWorkerService/GetWorkItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

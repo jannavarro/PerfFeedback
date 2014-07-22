@@ -21,6 +21,15 @@ namespace PerfFeedback.WcfBusinessService
         CoWorker GetCoWorker(long coWorkerId, string name);
 
         [OperationContract]
+        WorkItem AddWorkItem(WorkItem workItem);
+
+        [OperationContract]
+        WorkItem UpdateWorkItem(WorkItem workItem);
+
+        [OperationContract]
+        WorkItem GetWorkItem(long workItemId, string title);
+
+        [OperationContract]
         List<CoWorker> GetAllCoWorkers();
     }
 }

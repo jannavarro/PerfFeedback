@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using PerfFeedback.Client;
 using PerfFeedback.Client.Interfaces;
@@ -10,7 +12,7 @@ namespace PerfFeedback.Dialogs
     /// <summary>
     /// Interaction logic for ChooseWorkItem.xaml
     /// </summary>
-    public partial class ChooseWorkItem : Window, IOperationView
+    public partial class ChooseWorkItem : Window, IOperationView, IItemView
     {
         public ChooseWorkItem()
         {
@@ -38,31 +40,55 @@ namespace PerfFeedback.Dialogs
 
         public void Add()
         {
-            ModalFeedbackDialog dialog = new ModalFeedbackDialog();
-            var clone = DataContext as CoWorker;
-            var copy = new CoWorker()
-            {
-                Id = clone.Id,
-                Name = clone.Name,
-                WorkItemName = clone.WorkItemName
-            };
+            ModalWorkItemDialog dialog = new ModalWorkItemDialog();
+            var coWorker = DataContext as CoWorker;
+            var workItem = new WorkItem()
+                                    {
+                                        CoWorkerId = coWorker.CoWorkerId
+                                    };
 
-            dialog.DataContext = copy;
-            if (dialog.ShowDialog().IsTrue())
-            {
-
-            }
+            dialog.DataContext = workItem;
+            dialog.ShowDialog();
         }
 
         public void Edit()
         {
             var coWorker = DataContext as CoWorker;
-            ModalFeedbackDialog dialog = new ModalFeedbackDialog();
-            dialog.DataContext = new CoWorker(coWorker);
+            ModalWorkItemDialog dialog = new ModalWorkItemDialog();
+            var workItem = new WorkItem(coWorker.WorkItems.SelectedItem);
+            workItem.OperationState = OperationState.Edit;
+            dialog.DataContext = workItem;
+            //Get index so we know what to update later.
+            int indexOf = coWorker.WorkItems.IndexOf(coWorker.WorkItems.SelectedItem);
+            
             if (dialog.ShowDialog().IsTrue())
             {
-
+                coWorker.WorkItems[indexOf] = dialog.DataContext as WorkItem;
             }
+        }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var context = DataContext as CoWorker;
+            try
+            {
+                context.WorkItems.EditCommand.Execute(null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void FailedCommit(string error)
+        {
+            MessageBox.Show(error);
+        }
+
+        public void SuccessCommit(object response)
+        {
+            DialogResult = true;
+            Close();
         }
     }
 }

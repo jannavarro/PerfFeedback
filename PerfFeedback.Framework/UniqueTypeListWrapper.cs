@@ -17,7 +17,7 @@ namespace PerfFeedback.Framework
             List<T> newList = new List<T>();
             foreach (var listItem in _wrappedList.ToArray())
 	        {
-	        	 if(listItem is T)
+	        	 if(listItem.GetType() == item.GetType())
                  {
                      continue;
                  }

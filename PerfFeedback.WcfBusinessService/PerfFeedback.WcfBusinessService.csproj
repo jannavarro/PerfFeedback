@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201402250604334_Two.Designer.cs">
       <DependentUpon>201402250604334_Two.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403060317277_New.cs" />
+    <Compile Include="Migrations\201403060317277_New.Designer.cs">
+      <DependentUpon>201403060317277_New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CoWorkerService.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201402250604334_Two.resx">
       <DependentUpon>201402250604334_Two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403060317277_New.resx">
+      <DependentUpon>201403060317277_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

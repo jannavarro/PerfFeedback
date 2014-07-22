@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using PerfFeedback.Client.Models;
@@ -6,16 +7,16 @@ using PerfFeedback.Framework;
 
 namespace PerfFeedback.Client.ViewModels{
     [DataContract(Namespace = "http://perf.com/perf")]
-    public class CoWorker : ItemViewModel    {
+    public class CoWorker : ItemViewModel<CoWorkerModel>    {
+        private ListWorkItem _listWorkItems = new ListWorkItem();
+
         public CoWorker()
         {
-            OperationState = ViewModels.OperationState.Add;
         }
 
         public CoWorker(CoWorker copy)
         {
-            this.Id = copy.Id;
-            this.WorkItemName = copy.WorkItemName;
+            this.CoWorkerId = copy.CoWorkerId;
             this.Name = copy.Name;
             if (copy.CurrentWorkItem != null)
             {
@@ -37,17 +38,25 @@ namespace PerfFeedback.Client.ViewModels{
         private void WorkItems_SelectedItemChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             CurrentWorkItem = WorkItems.SelectedItem;
-        }        private CoWorkerModel _model;        public CoWorkerModel Model        {          get           {              if(_model == null)              {                  _model = new CoWorkerModel();              }              return _model;           }          set { _model = value; }        }        [DataMember]
-        public long Id { get; set; }
-
-        [DataMember]
-        public string WorkItemName { get; set; }
+        }        [DataMember]
+        public long CoWorkerId { get; set; }
 
         [DataMember]
         public string Name { get; set; }
 
         [DataMember]
-        public ListWorkItem WorkItems { get; set; }
+        public ListWorkItem WorkItems 
+        {
+            get
+            {
+                return _listWorkItems;
+            }
+            set
+            {
+                _listWorkItems = value;
+                OnPropertyChanged("WorkItems");
+            }
+        }
 
         public WorkItem CurrentWorkItem { get; set; }
 
@@ -55,7 +64,6 @@ namespace PerfFeedback.Client.ViewModels{
         {
             if (OperationState != ViewModels.OperationState.Edit)
             {
-                WorkItemName = string.Empty;
                 Name = string.Empty;
                 CurrentWorkItem = new WorkItem();
                 WorkItems = new ListWorkItem { CurrentWorkItem };
@@ -67,9 +75,17 @@ namespace PerfFeedback.Client.ViewModels{
 
         protected override void OnInitialize(long id)
         {
-            Model.Get(id);
+            throw new NotImplementedException();
         }        
-        protected override void OnCommit()        {            Model.Commit(this);        }
+        protected override void OnCommit()        {
+            if (OperationState != ViewModels.OperationState.Edit)
+            {
+                Model.Commit(this);
+            }
+            else
+            {
+                Model.Update(this);
+            }        }
 
         protected override void OnSubscribe()
         {
@@ -78,9 +94,9 @@ namespace PerfFeedback.Client.ViewModels{
 
         protected override void OnHandleNotification(SubscribeResponse response)
         {
-            if (response.Result == Result.Success)
+            if (response.StatusResult == Result.Success)
             {
-                ItemView.SuccessCommit(null);
+                ItemView.SuccessCommit(true);
             }
             else
             {

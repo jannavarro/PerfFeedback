@@ -68,6 +68,9 @@
     <Compile Include="Dialogs\ChooseWorkItem.xaml.cs">
       <DependentUpon>ChooseWorkItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ModalWorkItemDialog.xaml.cs">
+      <DependentUpon>ModalWorkItemDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\CoWorkerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ModalFeedbackDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ModalWorkItemDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

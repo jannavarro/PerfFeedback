@@ -44,6 +44,49 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddWorkItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://perf.com/perf" minOccurs="0" name="workItem" nillable="true" type="q6:WorkItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://perf.com/perf" minOccurs="0" name="AddWorkItemResult" nillable="true" type="q7:WorkItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://perf.com/perf" minOccurs="0" name="workItem" nillable="true" type="q8:WorkItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://perf.com/perf" minOccurs="0" name="UpdateWorkItemResult" nillable="true" type="q9:WorkItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workItemId" type="xs:long" />
+        <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://perf.com/perf" minOccurs="0" name="GetWorkItemResult" nillable="true" type="q10:WorkItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAllCoWorkers">
     <xs:complexType>
       <xs:sequence />
@@ -52,7 +95,7 @@
   <xs:element name="GetAllCoWorkersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://perf.com/perf" minOccurs="0" name="GetAllCoWorkersResult" nillable="true" type="q6:ArrayOfCoWorker" />
+        <xs:element xmlns:q11="http://perf.com/perf" minOccurs="0" name="GetAllCoWorkersResult" nillable="true" type="q11:ArrayOfCoWorker" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
